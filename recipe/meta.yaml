@@ -1,12 +1,10 @@
-{% set name = "pastix" %}
 {% set version = "6.4.0" %}
 
 package:
-  name: {{ name }}
+  name: pastix-split
   version: {{ version }}
 
 source:
-  fn: {{ name }}_{{ version }}.tar.gz
   url: https://files.inria.fr/pastix/releases/v6/pastix-{{ version }}.tar.gz
   sha256: 891d426188eed56c1075fb34d2d80132593a1536ffc05cf333567f68a4811e55
   patches:
@@ -15,12 +13,15 @@ source:
 
 build:
   number: 0
-  run_exports:
-    - {{ pin_subpackage('pastix', max_pin='x.x') }}
   skip: true  # [win]
 
 outputs:
-  - name: lib-pastix
+  - name: libpastix
+    script: build_libpastix.sh  # [unix]
+    script: bld_libpastix.bat   # [win]
+    build:
+      run_exports:
+        - {{ pin_subpackage('libpastix', max_pin='x.x') }}
     requirements:
       build:
         - {{ stdlib('c') }}                 # [unix]
@@ -34,6 +35,7 @@ outputs:
         - cmake
         - ninja
         - pkgconfig
+
       host:
         - libblas
         - libcblas
@@ -43,30 +45,28 @@ outputs:
         - libhwloc
         - metis
 
+    test:
+      commands:
+        - test -f ${PREFIX}/lib/pastix${ SHLIB_EXT }               # [unix]
+        - if not exist %LIBRARY_PREFIX%\\pastix%SHLIB_EXT% exit 1  # [win]
+
   - name: pastix
-    script: build_python.sh  # [unix]
+    script: build_pastix.sh
     build:
       noarch: python
-      skip: true  # [not linux64]
+      skip: true   # [not linux64]
     requirements:
       build:
-        - {{ stdlib('c') }}                 # [unix]
-        - {{ compiler('c') }}               # [unix]
-        - {{ compiler('cxx') }}             # [unix]
-        - {{ compiler('fortran') }}         # [unix]
-        - {{ stdlib('m2w64_c') }}           # [win]
-        - {{ compiler('m2w64_c') }}         # [win]
-        - {{ compiler('m2w64_cxx') }}       # [win]
-        - {{ compiler('m2w64_fortran') }}   # [win]
         - cmake
       host:
-        python >= 3.12
-    test:
-      requires:
-        - python
+        - python >=3.8
+      run:
+        - python >=3.8
         - numpy
         - scipy
-      imports:
+        - {{ pin_subpackage('libpastix', max_pin='x.x.x') }}
+    test:
+      import:
         - pastix
         - spm
 
