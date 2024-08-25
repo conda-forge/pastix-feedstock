@@ -67,6 +67,7 @@ outputs:
         - pkgconfig
       host:
         - python >=3.8
+        - {{ pin_subpackage('libpastix', max_pin='x.x.x') }}
       run:
         - python >=3.8
         - numpy
