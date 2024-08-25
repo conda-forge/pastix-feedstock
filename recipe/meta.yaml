@@ -11,6 +11,7 @@ source:
   sha256: 891d426188eed56c1075fb34d2d80132593a1536ffc05cf333567f68a4811e55
   patches:
     - patches/message.patch
+    - patches/split_python.patch
 
 build:
   number: 0
@@ -18,34 +19,56 @@ build:
     - {{ pin_subpackage('pastix', max_pin='x.x') }}
   skip: true  # [win]
 
+outputs:
+  - name: lib-pastix
+    requirements:
+      build:
+        - {{ stdlib('c') }}                 # [unix]
+        - {{ compiler('c') }}               # [unix]
+        - {{ compiler('cxx') }}             # [unix]
+        - {{ compiler('fortran') }}         # [unix]
+        - {{ stdlib('m2w64_c') }}           # [win]
+        - {{ compiler('m2w64_c') }}         # [win]
+        - {{ compiler('m2w64_cxx') }}       # [win]
+        - {{ compiler('m2w64_fortran') }}   # [win]
+        - cmake
+        - ninja
+        - pkgconfig
+      host:
+        - libblas
+        - libcblas
+        - liblapack
+        - liblapacke
+        # - libscotch # no 64bit support
+        - libhwloc
+        - metis
 
-requirements:
-  build:
-    - {{ stdlib('c') }}                 # [unix]
-    - {{ compiler('c') }}               # [unix]
-    - {{ compiler('cxx') }}             # [unix]
-    - {{ compiler('fortran') }}         # [unix]
-    - {{ stdlib('m2w64_c') }}           # [win]
-    - {{ compiler('m2w64_c') }}         # [win]
-    - {{ compiler('m2w64_cxx') }}       # [win]
-    - {{ compiler('m2w64_fortran') }}   # [win]
-    - cmake
-    - ninja
-    - pkgconfig
-
-  host:
-    - libblas
-    - libcblas
-    - liblapack
-    - liblapacke
-    # - libscotch # no 64bit support
-    - libhwloc
-    - metis
-
-
-test:
-  commands:
-    # no idea how to test pastix...
+  - name: pastix
+    script: build_python.sh  # [unix]
+    build:
+      noarch: python
+      skip: true  # [not linux64]
+    requirements:
+      build:
+        - {{ stdlib('c') }}                 # [unix]
+        - {{ compiler('c') }}               # [unix]
+        - {{ compiler('cxx') }}             # [unix]
+        - {{ compiler('fortran') }}         # [unix]
+        - {{ stdlib('m2w64_c') }}           # [win]
+        - {{ compiler('m2w64_c') }}         # [win]
+        - {{ compiler('m2w64_cxx') }}       # [win]
+        - {{ compiler('m2w64_fortran') }}   # [win]
+        - cmake
+      host:
+        python >= 3.12
+    test:
+      requires:
+        - python
+        - numpy
+        - scipy
+      imports:
+        - pastix
+        - spm
 
 about:
   home: https://solverstack.gitlabpages.inria.fr/pastix/
