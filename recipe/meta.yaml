@@ -43,6 +43,10 @@ requirements:
     - metis
     - python
 
+  run:
+    - python
+    - numpy
+
 
 test:
   imports:
