@@ -1,0 +1,46 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bf39c27..6c57b90 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -258,12 +258,19 @@ cmake_dependent_option(PASTIX_DEBUG_MPI
+ option(PASTIX_LR_TESTINGS
+   "Enable the generation of low-rank testings (Requires LAPACKE with TMG support)" OFF)
+ 
++### Build libraries
++option(BUILD_LIBS "Build the libraries", ON)
++
++### BUILD wrappers
++option(BUILD_WRAPPERS "BUILD the wrappers" ON)
++
+ #########################
+ # Look for dependencies #
+ #########################
+ 
+ # PaStiX depends on the libm
+ #---------------------------
++if(BUILD_LIBS)
+ find_package(M REQUIRED)
+ morse_export_imported_target(MORSE M m pastix)
+ 
+@@ -955,9 +962,6 @@ add_subdirectory(example)
+ # Testing executables
+ add_subdirectory(test)
+ 
+-### Wrappers
+-add_subdirectory(wrappers)
+-
+ ### Build pkg-config and environment file
+ include(GenPkgConfig)
+ 
+@@ -1245,3 +1249,10 @@ install( FILES
+ # Print Options
+ #############################################################
+ include(PrintOpts)
++
++endif(BUILD_LIBS)
++
++if(BUILD_WRAPPERS)
++### Wrappers
++add_subdirectory(wrappers)
++endif(BUILD_WRAPPERS)
+\ No newline at end of file
