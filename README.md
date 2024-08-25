@@ -3,6 +3,54 @@ About pastix-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pastix-feedstock/blob/main/LICENSE.txt)
 
+
+About pastix
+------------
+
+Home: https://solverstack.gitlabpages.inria.fr/pastix/
+
+Package license: LGPL-3.0-or-later
+
+Summary: library for solving sparse real and complex linear systems of equations
+
+Development: https://gitlab.inria.fr/solverstack/pastix
+
+Documentation: https://solverstack.gitlabpages.inria.fr/pastix/
+
+PaStiX (Parallel Sparse matriX package) is a scientific library that 
+provides a high performance parallel solver for very large sparse linear 
+systems based on direct methods. Numerical algorithms are implemented 
+in single or double precision (real or complex) using LLt, LDLt and LU 
+with static pivoting (for non symmetric matrices having a symmetric pattern). 
+This solver also provides some low-rank compression methods to reduce the 
+memory footprint and/or the time-to-solution.
+
+
+About lib-pastix
+----------------
+
+Home: https://solverstack.gitlabpages.inria.fr/pastix/
+
+Package license: LGPL-3.0-or-later
+
+Summary: library for solving sparse real and complex linear systems of equations
+
+Development: https://gitlab.inria.fr/solverstack/pastix
+
+Documentation: https://solverstack.gitlabpages.inria.fr/pastix/
+
+PaStiX (Parallel Sparse matriX package) is a scientific library that
+provides a high performance parallel solver for very large sparse linear
+systems based on direct methods. Numerical algorithms are implemented
+in single or double precision (real or complex) using LLt, LDLt and LU
+with static pivoting (for non symmetric matrices having a symmetric pattern).
+This solver also provides some low-rank compression methods to reduce the
+memory footprint and/or the time-to-solution.
+
+
+About pastix
+------------
+
 Home: https://solverstack.gitlabpages.inria.fr/pastix/
 
 Package license: LGPL-3.0-or-later
@@ -40,143 +88,10 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_numpy1.22python3.10.____cpython</td>
+              <td>linux_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.22python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_numpy1.22python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.22python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_numpy1.22python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.22python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_numpy1.23python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.23python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_numpy1.26python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.26python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_numpy1.22python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_numpy1.22python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_numpy1.22python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_numpy1.22python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_numpy1.22python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_numpy1.22python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_numpy1.23python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_numpy1.23python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64_numpy1.26python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_numpy1.26python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_numpy1.22python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.22python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_numpy1.22python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.22python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_numpy1.22python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.22python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_numpy1.23python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.23python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_numpy1.26python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.26python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_numpy1.22python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.22python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_numpy1.22python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.22python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_numpy1.22python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.22python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_numpy1.23python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.23python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_numpy1.26python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.26python3.12.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -192,6 +107,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-lib--pastix-green.svg)](https://anaconda.org/conda-forge/lib-pastix) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/lib-pastix.svg)](https://anaconda.org/conda-forge/lib-pastix) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/lib-pastix.svg)](https://anaconda.org/conda-forge/lib-pastix) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/lib-pastix.svg)](https://anaconda.org/conda-forge/lib-pastix) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-pastix-green.svg)](https://anaconda.org/conda-forge/pastix) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pastix.svg)](https://anaconda.org/conda-forge/pastix) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pastix.svg)](https://anaconda.org/conda-forge/pastix) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pastix.svg)](https://anaconda.org/conda-forge/pastix) |
 
 Installing pastix
@@ -204,41 +120,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `pastix` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `lib-pastix, pastix` can be installed with `conda`:
 
 ```
-conda install pastix
-```
-
-or with `mamba`:
-
-```
-mamba install pastix
-```
-
-It is possible to list all of the versions of `pastix` available on your platform with `conda`:
-
-```
-conda search pastix --channel conda-forge
+conda install lib-pastix pastix
 ```
 
 or with `mamba`:
 
 ```
-mamba search pastix --channel conda-forge
+mamba install lib-pastix pastix
+```
+
+It is possible to list all of the versions of `lib-pastix` available on your platform with `conda`:
+
+```
+conda search lib-pastix --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search lib-pastix --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search pastix --channel conda-forge
+mamba repoquery search lib-pastix --channel conda-forge
 
-# List packages depending on `pastix`:
-mamba repoquery whoneeds pastix --channel conda-forge
+# List packages depending on `lib-pastix`:
+mamba repoquery whoneeds lib-pastix --channel conda-forge
 
-# List dependencies of `pastix`:
-mamba repoquery depends pastix --channel conda-forge
+# List dependencies of `lib-pastix`:
+mamba repoquery depends lib-pastix --channel conda-forge
 ```
 
 
