@@ -73,7 +73,11 @@ outputs:
         - scipy
         - {{ pin_subpackage('libpastix', max_pin='x.x.x') }}
     test:
-      import:
+      requires:
+        - pip
+      commands:
+        - pip check
+      imports:
         - pastix
         - spm
 
