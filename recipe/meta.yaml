@@ -43,6 +43,10 @@ outputs:
         # - libscotch # no 64bit support
         - libhwloc
         - metis
+    test:
+      commands:
+        - test -f ${PREFIX}/lib/pastix.so.{{ VERSION }}  # [linux]
+
 
   - name: pastix
     script: build_python.sh  # [unix]
