@@ -51,13 +51,20 @@ outputs:
         - if not exist %LIBRARY_PREFIX%\\pastix%SHLIB_EXT% exit 1  # [win]
 
   - name: pastix
-    script: build_pastix.sh
+    script: build_python.sh
     build:
       noarch: python
       skip: true   # [not linux64]
     requirements:
       build:
         - cmake
+        # We don't actually need C stuff here, but just to keep the build scripts happy
+        - {{ stdlib('c') }}                 # [unix]
+        - {{ compiler('c') }}               # [unix]
+        - {{ compiler('cxx') }}             # [unix]
+        - {{ compiler('fortran') }}         # [unix]
+        - ninja
+        - pkgconfig
       host:
         - python >=3.8
       run:
