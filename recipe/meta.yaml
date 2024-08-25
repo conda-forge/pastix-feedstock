@@ -41,11 +41,13 @@ requirements:
     # - libscotch # no 64bit support
     - libhwloc
     - metis
+    - python
 
 
 test:
-  commands:
-    # no idea how to test pastix...
+  imports:
+    - pastix
+    - spm
 
 about:
   home: https://solverstack.gitlabpages.inria.fr/pastix/
