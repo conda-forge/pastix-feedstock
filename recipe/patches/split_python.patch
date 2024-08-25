@@ -7,7 +7,7 @@ index bf39c27..6c57b90 100644
    "Enable the generation of low-rank testings (Requires LAPACKE with TMG support)" OFF)
  
 +### Build libraries
-+option(BUILD_LIBS "Build the libraries", ON)
++option(BUILD_LIBS "Build the libraries" ON)
 +
 +### BUILD wrappers
 +option(BUILD_WRAPPERS "BUILD the wrappers" ON)
