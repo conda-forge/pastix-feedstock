@@ -1,51 +1,86 @@
-{% set name = "pastix" %}
 {% set version = "6.4.0" %}
 
 package:
-  name: {{ name }}
+  name: pastix-split
   version: {{ version }}
 
 source:
-  fn: {{ name }}_{{ version }}.tar.gz
   url: https://files.inria.fr/pastix/releases/v6/pastix-{{ version }}.tar.gz
   sha256: 891d426188eed56c1075fb34d2d80132593a1536ffc05cf333567f68a4811e55
   patches:
     - patches/message.patch
+    - patches/split_python.patch
 
 build:
   number: 0
-  run_exports:
-    - {{ pin_subpackage('pastix', max_pin='x.x') }}
   skip: true  # [win]
 
+outputs:
+  - name: libpastix
+    script: build_libpastix.sh  # [unix]
+    script: bld_libpastix.bat   # [win]
+    build:
+      run_exports:
+        - {{ pin_subpackage('libpastix', max_pin='x.x') }}
+    requirements:
+      build:
+        - {{ stdlib('c') }}                 # [unix]
+        - {{ compiler('c') }}               # [unix]
+        - {{ compiler('cxx') }}             # [unix]
+        - {{ compiler('fortran') }}         # [unix]
+        - {{ stdlib('m2w64_c') }}           # [win]
+        - {{ compiler('m2w64_c') }}         # [win]
+        - {{ compiler('m2w64_cxx') }}       # [win]
+        - {{ compiler('m2w64_fortran') }}   # [win]
+        - cmake
+        - ninja
+        - pkgconfig
 
-requirements:
-  build:
-    - {{ stdlib('c') }}                 # [unix]
-    - {{ compiler('c') }}               # [unix]
-    - {{ compiler('cxx') }}             # [unix]
-    - {{ compiler('fortran') }}         # [unix]
-    - {{ stdlib('m2w64_c') }}           # [win]
-    - {{ compiler('m2w64_c') }}         # [win]
-    - {{ compiler('m2w64_cxx') }}       # [win]
-    - {{ compiler('m2w64_fortran') }}   # [win]
-    - cmake
-    - ninja
-    - pkgconfig
+      host:
+        - libblas
+        - libcblas
+        - liblapack
+        - liblapacke
+        # - libscotch # no 64bit support
+        - libhwloc
+        - metis
 
-  host:
-    - libblas
-    - libcblas
-    - liblapack
-    - liblapacke
-    # - libscotch # no 64bit support
-    - libhwloc
-    - metis
+    test:
+      commands:
+        - test -f ${PREFIX}/lib/libpastix${SHLIB_EXT}              # [unix]
+        - if not exist %LIBRARY_PREFIX%\\pastix%SHLIB_EXT% exit 1  # [win]
 
-
-test:
-  commands:
-    # no idea how to test pastix...
+  - name: pastix
+    script: build_python.sh
+    build:
+      noarch: python
+      skip: true   # [not linux64]
+    requirements:
+      build:
+        - cmake
+        # We don't actually need C stuff here, but just to keep the build scripts happy
+        - {{ stdlib('c') }}                 # [unix]
+        - {{ compiler('c') }}               # [unix]
+        - {{ compiler('cxx') }}             # [unix]
+        - {{ compiler('fortran') }}         # [unix]
+        - ninja
+        - pkgconfig
+      host:
+        - python >=3.8
+        - {{ pin_subpackage('libpastix', max_pin='x.x.x') }}
+      run:
+        - python >=3.8
+        - numpy
+        - scipy
+        - {{ pin_subpackage('libpastix', max_pin='x.x.x') }}
+    test:
+      requires:
+        - pip
+      commands:
+        - pip check
+      imports:
+        - pastix
+        - spm
 
 about:
   home: https://solverstack.gitlabpages.inria.fr/pastix/
