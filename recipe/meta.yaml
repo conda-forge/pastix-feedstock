@@ -47,7 +47,8 @@ outputs:
 
     test:
       commands:
-        - test -f ${PREFIX}/lib/pastix${SHLIB_EXT}               # [unix]
+        - test -f ${PREFIX}/lib/pastix${SHLIB_EXT}                 # [linux]
+        - test -f ${PREFIX}/lib/libpastix${SHLIB_EXT}              # [osx]
         - if not exist %LIBRARY_PREFIX%\\pastix%SHLIB_EXT% exit 1  # [win]
 
   - name: pastix
