@@ -11,6 +11,3 @@ cmake -G "Ninja" -B build -S . \
       -D BUILD_LIBS:BOOL=OFF
 
 ninja -C build install
-
-# delete this file as it needs mpi
-rm $PREFIX/share/doc/pastix/examples/fortran/fmultilap
