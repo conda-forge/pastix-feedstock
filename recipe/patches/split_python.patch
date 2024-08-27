@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index bf39c27..6c57b90 100644
+index bf39c27..5255a43 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -258,12 +258,19 @@ cmake_dependent_option(PASTIX_DEBUG_MPI
@@ -7,10 +7,10 @@ index bf39c27..6c57b90 100644
    "Enable the generation of low-rank testings (Requires LAPACKE with TMG support)" OFF)
  
 +### Build libraries
-+option(BUILD_LIBS "Build the libraries" ON)
++option(BUILD_LIBS "Build the libraries", ON)
 +
 +### BUILD wrappers
-+option(BUILD_WRAPPERS "BUILD the wrappers" ON)
++option(BUILD_PYTHON "BUILD the wrappers" ON)
 +
  #########################
  # Look for dependencies #
@@ -32,15 +32,37 @@ index bf39c27..6c57b90 100644
  ### Build pkg-config and environment file
  include(GenPkgConfig)
  
-@@ -1245,3 +1249,10 @@ install( FILES
+@@ -1245,3 +1249,7 @@ install( FILES
  # Print Options
  #############################################################
  include(PrintOpts)
-+
 +endif(BUILD_LIBS)
 +
-+if(BUILD_WRAPPERS)
 +### Wrappers
 +add_subdirectory(wrappers)
-+endif(BUILD_WRAPPERS)
 \ No newline at end of file
+diff --git a/wrappers/CMakeLists.txt b/wrappers/CMakeLists.txt
+index e0dcf2a..727d014 100644
+--- a/wrappers/CMakeLists.txt
++++ b/wrappers/CMakeLists.txt
+@@ -9,13 +9,14 @@
+ #
+ ###
+ 
+-if (PASTIX_WITH_FORTRAN)
++if (BUILD_SHARED_LIBS AND BUILD_PYTHON)
++  add_subdirectory( python )
++endif(BUILD_SHARED_LIBS AND BUILD_PYTHON)
++
++if (PASTIX_WITH_FORTRAN AND NOT BUILD_PYTHON)
+   add_subdirectory( fortran90 )
+ endif()
+ 
+-if (BUILD_SHARED_LIBS)
+-  add_subdirectory( python )
++if (BUILD_SHARED_LIBS AND NOT BUILD_PYTHON)
+   add_subdirectory( julia )
+-else()
+-  message(STATUS "--- Python and Julia wrappers are disabled with static libraries")
+-endif()
++endif(BUILD_SHARED_LIBS AND NOT BUILD_PYTHON)
