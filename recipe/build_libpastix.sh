@@ -10,6 +10,7 @@ cmake -G "Ninja" -B build -S . \
       -D BUILD_LIBS:BOOL=ON
 
 ninja -C build install
+ninja -C build test
 
 
 # delete this file as it needs mpi
