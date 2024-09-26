@@ -32,6 +32,8 @@ liblapack:
 - 3.9 *netlib
 liblapacke:
 - 3.9 *netlib
+libscotch:
+- 7.0.5
 macos_machine:
 - x86_64-apple-darwin13.4.0
 metis:

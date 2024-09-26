@@ -10,9 +10,10 @@ source:
   patches:
     - patches/message.patch
     - patches/split_python.patch
+    - patches/disable_scotch_int64_check.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 outputs:
@@ -41,7 +42,7 @@ outputs:
         - libcblas
         - liblapack
         - liblapacke
-        # - libscotch # no 64bit support
+        - libscotch
         - libhwloc
         - metis
 
