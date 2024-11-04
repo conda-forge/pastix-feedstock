@@ -27,7 +27,7 @@ libblas:
 libcblas:
 - 3.9 *netlib
 libhwloc:
-- 2.11.1
+- 2.11.2
 liblapack:
 - 3.9 *netlib
 liblapacke:
