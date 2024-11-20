@@ -10,7 +10,6 @@ source:
   patches:
     - patches/message.patch
     - patches/split_python.patch
-    - patches/disable_scotch_int64_check.patch
 
 build:
   number: 1
