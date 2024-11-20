@@ -7,7 +7,8 @@ cmake -G "Ninja" -B build -S . \
       -D CMAKE_INSTALL_PREFIX:FILEPATH=$PREFIX \
       -D PASTIX_ORDERING_SCOTCH:BOOL=ON \
       -D BUILD_PYTHON:BOOL=OFF \
-      -D BUILD_LIBS:BOOL=ON
+      -D BUILD_LIBS:BOOL=ON \
+      -D PASTIX_INT64:BOOL=OFF
 
 ninja -C build install
 ninja -C build test --verbose
