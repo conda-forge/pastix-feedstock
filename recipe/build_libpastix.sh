@@ -11,7 +11,16 @@ cmake -G "Ninja" -B build -S . \
       -D PASTIX_INT64:BOOL=OFF
 
 ninja -C build install
-ninja -C build test --verbose
+
+if [ "$build_platform" == "$target_platform" ]; then
+    echo "Running tests with ninja..."
+    ninja -C build test --verbose
+else
+    echo "Skipping tests due to cross-compiling "
+    echo "(build_platform: $build_platform, target_platform: $target_platform)"
+fi
+
+
 
 
 # delete this file as it needs mpi
