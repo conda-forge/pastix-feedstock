@@ -10,6 +10,7 @@ source:
   patches:
     - patches/message.patch
     - patches/split_python.patch
+    - patches/disable_scotch_int_check.patch  # [build_platform != target_platform]
 
 build:
   number: 1
