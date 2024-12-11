@@ -1,8 +1,8 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index bf39c274..7137e173 100644
+index bf39c274..d5ffbf76 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -258,12 +258,19 @@ cmake_dependent_option(PASTIX_DEBUG_MPI
+@@ -258,12 +258,20 @@ cmake_dependent_option(PASTIX_DEBUG_MPI
  option(PASTIX_LR_TESTINGS
    "Enable the generation of low-rank testings (Requires LAPACKE with TMG support)" OFF)
  
@@ -10,7 +10,8 @@ index bf39c274..7137e173 100644
 +option(BUILD_LIBS "Build the libraries" ON)
 +
 +### BUILD wrappers
-+option(BUILD_PYTHON "BUILD the wrappers" ON)
++option(BUILD_PYTHON "BUILD the python wrappers" ON)
++
 +
  #########################
  # Look for dependencies #
@@ -22,7 +23,18 @@ index bf39c274..7137e173 100644
  find_package(M REQUIRED)
  morse_export_imported_target(MORSE M m pastix)
  
-@@ -955,9 +962,6 @@ add_subdirectory(example)
+@@ -531,6 +539,10 @@ else()
+   mark_as_advanced( SPM_WITH_MPI     )
+   mark_as_advanced( SPM_WITH_SCOTCH  )
+   add_subdirectory(spm)
++
++  set(BUILD_PYTHON ${BUILD_PYTHON} CACHE BOOL "Build Python bindings in spm" FORCE)
++  set(BUILD_LIBS ${BUILD_LIBS} CACHE BOOL "Build libraries in spm" FORCE)
++  
+   add_library(SPM::spm ALIAS spm)
+   if ( SPM_WITH_FORTRAN )
+     add_library(SPM::spmf ALIAS spmf)
+@@ -955,9 +967,6 @@ add_subdirectory(example)
  # Testing executables
  add_subdirectory(test)
  
@@ -32,7 +44,7 @@ index bf39c274..7137e173 100644
  ### Build pkg-config and environment file
  include(GenPkgConfig)
  
-@@ -1245,3 +1249,7 @@ install( FILES
+@@ -1245,3 +1254,7 @@ install( FILES
  # Print Options
  #############################################################
  include(PrintOpts)
@@ -43,18 +55,24 @@ index bf39c274..7137e173 100644
 \ No newline at end of file
 Submodule spm contains modified content
 diff --git a/spm/CMakeLists.txt b/spm/CMakeLists.txt
-index 9d18313..c9a129f 100644
+index 9d18313..4b78b13 100644
 --- a/spm/CMakeLists.txt
 +++ b/spm/CMakeLists.txt
-@@ -14,6 +14,7 @@
+@@ -14,6 +14,13 @@
  cmake_minimum_required (VERSION 3.5)
  project (SPM C Fortran)
  
++### Build libraries
++option(BUILD_LIBS "Build the libraries" ON)
++
++### BUILD wrappers
++option(BUILD_PYTHON "BUILD the python wrappers" ON)
++
 +if(BUILD_LIBS)
  # Check if compiled independently or within another project
  if ( ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
    set( BUILD_AS_SUBPROJECT OFF )
-@@ -275,8 +276,7 @@ add_subdirectory(examples)
+@@ -275,8 +282,7 @@ add_subdirectory(examples)
  ### Testing executables
  add_subdirectory(tests)
  
@@ -64,7 +82,7 @@ index 9d18313..c9a129f 100644
  
  ###############################################################################
  # Export targets #
-@@ -368,3 +368,8 @@ add_documented_files(
+@@ -368,3 +374,8 @@ add_documented_files(
    README.md
    )
  add_subdirectory(docs)
