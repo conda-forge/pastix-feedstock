@@ -55,7 +55,7 @@ index bf39c274..d5ffbf76 100644
 \ No newline at end of file
 Submodule spm contains modified content
 diff --git a/spm/CMakeLists.txt b/spm/CMakeLists.txt
-index 9d18313..27a55d0 100644
+index 9d18313..0a5ae2f 100644
 --- a/spm/CMakeLists.txt
 +++ b/spm/CMakeLists.txt
 @@ -14,6 +14,17 @@
@@ -86,7 +86,7 @@ index 9d18313..27a55d0 100644
  
  ###############################################################################
  # Export targets #
-@@ -368,3 +378,8 @@ add_documented_files(
+@@ -368,3 +378,11 @@ add_documented_files(
    README.md
    )
  add_subdirectory(docs)
@@ -95,6 +95,9 @@ index 9d18313..27a55d0 100644
 +
 +### Wrappers
 +add_subdirectory(wrappers)
++if (BUILD_PYTHON)
++  add_subdirectory(spm)
++endif
 \ No newline at end of file
 diff --git a/spm/wrappers/CMakeLists.txt b/spm/wrappers/CMakeLists.txt
 index e6ade62..2774dd9 100644
