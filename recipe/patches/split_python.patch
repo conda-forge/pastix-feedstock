@@ -55,10 +55,10 @@ index bf39c274..d5ffbf76 100644
 \ No newline at end of file
 Submodule spm contains modified content
 diff --git a/spm/CMakeLists.txt b/spm/CMakeLists.txt
-index 9d18313..4b78b13 100644
+index 9d18313..27a55d0 100644
 --- a/spm/CMakeLists.txt
 +++ b/spm/CMakeLists.txt
-@@ -14,6 +14,13 @@
+@@ -14,6 +14,17 @@
  cmake_minimum_required (VERSION 3.5)
  project (SPM C Fortran)
  
@@ -66,13 +66,17 @@ index 9d18313..4b78b13 100644
 +option(BUILD_LIBS "Build the libraries" ON)
 +
 +### BUILD wrappers
-+option(BUILD_PYTHON "BUILD the python wrappers" ON)
++option(BUILD_PYTHON "Build the python wrappers" ON)
++
++message(STATUS "BUILD_LIBS in spm is set to ${BUILD_LIBS}")
++message(STATUS "BUILD_PYTHON in spm is set to ${BUILD_PYTHON}")
++
 +
 +if(BUILD_LIBS)
  # Check if compiled independently or within another project
  if ( ${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
    set( BUILD_AS_SUBPROJECT OFF )
-@@ -275,8 +282,7 @@ add_subdirectory(examples)
+@@ -275,8 +286,7 @@ add_subdirectory(examples)
  ### Testing executables
  add_subdirectory(tests)
  
@@ -82,7 +86,7 @@ index 9d18313..4b78b13 100644
  
  ###############################################################################
  # Export targets #
-@@ -368,3 +374,8 @@ add_documented_files(
+@@ -368,3 +378,8 @@ add_documented_files(
    README.md
    )
  add_subdirectory(docs)
