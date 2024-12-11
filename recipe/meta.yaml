@@ -13,7 +13,7 @@ source:
     - patches/disable_scotch_int_check.patch  # [build_platform != target_platform]
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win]
 
 outputs:
