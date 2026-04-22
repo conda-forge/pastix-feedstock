@@ -36,6 +36,8 @@ libscotch:
 - 7.0.5
 metis:
 - 5.1.0
+python_min:
+- '3.9'
 target_platform:
 - linux-64
 zip_keys:

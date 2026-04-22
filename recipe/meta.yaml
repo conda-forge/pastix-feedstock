@@ -67,16 +67,17 @@ outputs:
         - ninja
         - pkgconfig
       host:
-        - python >=3.8
+        - python {{ python_min }}
         - {{ pin_subpackage('libpastix', max_pin='x.x.x') }}
       run:
-        - python >=3.8
+        - python >={{ python_min }}
         - numpy
         - scipy
         - {{ pin_subpackage('libpastix', max_pin='x.x.x') }}
     test:
       requires:
         - pip
+        - python {{ python_min }}
       commands:
         - pip check
       imports:
