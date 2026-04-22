@@ -8,6 +8,7 @@ cmake -G "Ninja" -B build -S . \
       -D Python3_EXECUTABLE="$PYTHON" \
       -D PASTIX_ORDERING_SCOTCH:BOOL=ON \
       -D BUILD_PYTHON:BOOL=ON \
-      -D BUILD_LIBS:BOOL=OFF
+      -D BUILD_LIBS:BOOL=OFF \
+      -D PASTIX_INT64:BOOL=ON
 
 ninja -C build install

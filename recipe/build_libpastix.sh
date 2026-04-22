@@ -8,7 +8,7 @@ cmake -G "Ninja" -B build -S . \
       -D PASTIX_ORDERING_SCOTCH:BOOL=ON \
       -D BUILD_PYTHON:BOOL=OFF \
       -D BUILD_LIBS:BOOL=ON \
-      -D PASTIX_INT64:BOOL=OFF
+      -D PASTIX_INT64:BOOL=ON
 
 ninja -C build install
 
