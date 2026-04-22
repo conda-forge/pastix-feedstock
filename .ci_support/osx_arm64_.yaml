@@ -27,13 +27,13 @@ libblas:
 libcblas:
 - 3.9.* *netlib
 libhwloc:
-- 2.12.1
+- 2.12.2
 liblapack:
 - 3.9.* *netlib
 liblapacke:
 - 3.9.* *netlib
 libscotch:
-- 7.0.5
+- 7.0.11
 macos_machine:
 - arm64-apple-darwin20.0.0
 metis:
