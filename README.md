@@ -1,34 +1,8 @@
-About pastix-split-feedstock
-============================
+About libpastix-feedstock
+=========================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pastix-feedstock/blob/main/LICENSE.txt)
 
-
-About pastix-split
-------------------
-
-Home: https://solverstack.gitlabpages.inria.fr/pastix/
-
-Package license: LGPL-3.0-or-later
-
-Summary: library for solving sparse real and complex linear systems of equations
-
-Development: https://gitlab.inria.fr/solverstack/pastix
-
-Documentation: https://solverstack.gitlabpages.inria.fr/pastix/
-
-PaStiX (Parallel Sparse matriX package) is a scientific library that 
-provides a high performance parallel solver for very large sparse linear 
-systems based on direct methods. Numerical algorithms are implemented 
-in single or double precision (real or complex) using LLt, LDLt and LU 
-with static pivoting (for non symmetric matrices having a symmetric pattern). 
-This solver also provides some low-rank compression methods to reduce the 
-memory footprint and/or the time-to-solution.
-
-
-About libpastix
----------------
-
 Home: https://solverstack.gitlabpages.inria.fr/pastix/
 
 Package license: LGPL-3.0-or-later
@@ -46,79 +20,17 @@ in single or double precision (real or complex) using LLt, LDLt and LU
 with static pivoting (for non symmetric matrices having a symmetric pattern).
 This solver also provides some low-rank compression methods to reduce the
 memory footprint and/or the time-to-solution.
-
-
-About pastix
-------------
-
-Home: https://solverstack.gitlabpages.inria.fr/pastix/
-
-Package license: LGPL-3.0-or-later
-
-Summary: library for solving sparse real and complex linear systems of equations
-
-Development: https://gitlab.inria.fr/solverstack/pastix
-
-Documentation: https://solverstack.gitlabpages.inria.fr/pastix/
-
-PaStiX (Parallel Sparse matriX package) is a scientific library that
-provides a high performance parallel solver for very large sparse linear
-systems based on direct methods. Numerical algorithms are implemented
-in single or double precision (real or complex) using LLt, LDLt and LU
-with static pivoting (for non symmetric matrices having a symmetric pattern).
-This solver also provides some low-rank compression methods to reduce the
-memory footprint and/or the time-to-solution.
-
 
 Current build status
 ====================
 
 
-<table>
-    
-  <tr>
-    <td>Azure</td>
+<table><tr>
+    <td>GitHub Actions</td>
     <td>
-      <details>
-        <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main">
-          </a>
-        </summary>
-        <table>
-          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
-          <tbody><tr>
-              <td>linux_64</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_aarch64</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=23017&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/pastix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </details>
+      <a href="https://github.com/conda-forge/pastix-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/pastix-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
+      </a>
     </td>
   </tr>
 </table>
@@ -131,41 +43,83 @@ Current release info
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libpastix-green.svg)](https://anaconda.org/conda-forge/libpastix) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libpastix.svg)](https://anaconda.org/conda-forge/libpastix) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libpastix.svg)](https://anaconda.org/conda-forge/libpastix) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libpastix.svg)](https://anaconda.org/conda-forge/libpastix) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-pastix-green.svg)](https://anaconda.org/conda-forge/pastix) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/pastix.svg)](https://anaconda.org/conda-forge/pastix) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/pastix.svg)](https://anaconda.org/conda-forge/pastix) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/pastix.svg)](https://anaconda.org/conda-forge/pastix) |
 
-Installing pastix-split
-=======================
+Installing libpastix
+====================
 
-Installing `pastix-split` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `libpastix` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libpastix, pastix` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install libpastix pastix
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba install libpastix pastix
 ```
 
-It is possible to list all of the versions of `libpastix` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add libpastix pastix
+# for installing globally
+pixi global install libpastix pastix
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `libpastix` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search libpastix --channel conda-forge
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search libpastix --channel conda-forge
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search libpastix --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -177,6 +131,8 @@ mamba repoquery whoneeds libpastix --channel conda-forge
 # List dependencies of `libpastix`:
 mamba repoquery depends libpastix --channel conda-forge
 ```
+
+</details>
 
 
 About conda-forge
@@ -200,12 +156,12 @@ it is possible to build and upload installable packages to the
 [conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
-To manage the continuous integration and simplify feedstock maintenance
+To manage the continuous integration and simplify feedstock maintenance,
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
-For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
+For more information, please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
@@ -220,19 +176,19 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating pastix-split-feedstock
-===============================
+Updating libpastix-feedstock
+============================
 
-If you would like to improve the pastix-split recipe or build a new
+If you would like to improve the libpastix recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/pastix-split-feedstock are
+Note that all branches in the conda-forge/libpastix-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
-on branches in forks and branches in the main repository should only be used to
+on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:

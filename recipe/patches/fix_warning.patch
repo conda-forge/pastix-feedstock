@@ -1,0 +1,32 @@
+diff --git a/common/isched_nohwloc.c b/common/isched_nohwloc.c
+index 1111111..2222222 100644
+--- a/common/isched_nohwloc.c
++++ b/common/isched_nohwloc.c
+@@ -6,6 +6,7 @@
+  **/
+ #include "common.h"
+ #include "isched.h"
++#include <stdio.h>
+ 
+ #if defined(PASTIX_HAVE_SCHED_SETAFFINITY)
+ #  include <linux/unistd.h>
+@@ -90,9 +91,9 @@ int isched_nohwloc_world_size()
+ 
+ int isched_nohwloc_socketsnbr()
+ {
+-    pastix_warning( "The socket number can not be automatically detected \
++    fprintf(stderr, "The socket number can not be automatically detected \
+                      if hwloc is not activated. If you want to compute \
+-                     the energy with papi please define the number of \
++                     the energy with papi please define the number of \
+                      sockets with iparm_socket_nbr." );
+     return 0;
+ }
+@@ -168,7 +169,7 @@ int isched_nohwloc_unbind()
+ #endif /* HAVE_OLD_SCHED_SETAFFINITY */
+         if ( rc < 0 )
+         {
+-            pastix_warning("pastix_unsetaffinity", "Could not unbind thread");
++            fprintf(stderr, "pastix_unsetaffinity: Could not unbind thread\n");
+             return -1;
+         }

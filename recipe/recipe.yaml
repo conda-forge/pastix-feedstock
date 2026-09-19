@@ -1,0 +1,126 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+context:
+  version: 6.4.0
+  python_min: "3.10"
+
+recipe:
+  name: pastix-split
+  version: ${{ version }}
+
+source:
+  url: https://files.inria.fr/pastix/releases/v6/pastix-${{ version }}.tar.gz
+  sha256: 891d426188eed56c1075fb34d2d80132593a1536ffc05cf333567f68a4811e55
+  patches:
+    - patches/split_python.patch
+    - patches/fix_warning.patch
+
+build:
+  number: 8
+  skip:
+    - win
+    - osx
+
+outputs:
+  - package:
+      name: libpastix
+      version: ${{ version }}
+    build:
+      dynamic_linking:
+        missing_dso_allowlist:
+          - "*/libcuda.so*"
+      script:
+        file: build_libpastix.sh
+    requirements:
+      run_exports:
+        - ${{ pin_subpackage('libpastix', upper_bound='x.x') }}
+      build:
+        - if: unix
+          then:
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+            - ${{ compiler('fortran') }}
+            - ${{ stdlib('c') }}
+        - if: win
+          then:
+            - ${{ compiler('m2w64_c') }}
+            - ${{ compiler('m2w64_cxx') }}
+            - ${{ compiler('m2w64_fortran') }}
+            - ${{ stdlib('m2w64_c') }}
+        - cmake
+        - ninja
+        - pkg-config
+      host:
+        - libblas
+        - libcblas
+        - liblapack
+        - liblapacke
+        - libscotch
+        - libhwloc
+        - metis
+    tests:
+      - script:
+          content:
+            - if: unix
+              then: test -f $PREFIX/lib/libpastix${{ SHLIB_EXT }}
+            - if: win
+              then: if not exist %LIBRARY_PREFIX%\pastix%SHLIB_EXT% exit 1
+
+  - package:
+      name: pastix
+      version: ${{ version }}
+    build:
+      noarch: python
+      skip:
+        - not linux64
+      script:
+        file: build_python.sh
+    requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+        - ${{ compiler('fortran') }}
+        - ${{ stdlib('c') }}
+        - cmake
+        - ninja
+        - pkg-config
+      host:
+        - python >=${{ python_min }}
+        - ${{ pin_subpackage('libpastix', upper_bound='x.x.x') }}
+      run:
+        - python >=${{ python_min }}
+        - numpy
+        - scipy
+        - ${{ pin_subpackage('libpastix', upper_bound='x.x.x') }}
+    tests:
+      - python:
+          imports:
+            - pastix
+            - spm
+      - script:
+          content: pip check
+        requirements:
+          run:
+            - pip
+            - python >=${{ python_min }}
+
+about:
+  homepage: https://solverstack.gitlabpages.inria.fr/pastix/
+  summary: library for solving sparse real and complex linear systems of equations
+  license: LGPL-3.0-or-later
+  license_file: LICENSE
+  description: |
+    PaStiX (Parallel Sparse matriX package) is a scientific library that
+    provides a high performance parallel solver for very large sparse linear
+    systems based on direct methods. Numerical algorithms are implemented
+    in single or double precision (real or complex) using LLt, LDLt and LU
+    with static pivoting (for non symmetric matrices having a symmetric pattern).
+    This solver also provides some low-rank compression methods to reduce the
+    memory footprint and/or the time-to-solution.
+  documentation: https://solverstack.gitlabpages.inria.fr/pastix/
+  repository: https://gitlab.inria.fr/solverstack/pastix
+
+extra:
+  recipe-maintainers:
+    - looooo
