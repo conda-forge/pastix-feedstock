@@ -17,7 +17,7 @@ source:
     - patches/fix_warning.patch
 
 build:
-  number: 9
+  number: 10
   skip:
     - win
     - osx
